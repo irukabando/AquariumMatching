@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水族館マッチング</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <header>
+        <h1>水族館マッチング</h1>
+        <nav>
+            <ul>
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">水族館検索</a></li>
+                <li><a href="#">マッチング</a></li>
+                <li><a href="#">ログイン/登録</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2>理想の水族館を見つけよう！</h2>
+            <p>あなたの条件にぴったりの水族館と出会えるマッチングサイトです。</p>
+            <a href="#" class="button">水族館を探す</a>
+        </section>
+
+        <section id="search">
+            <h2>水族館検索</h2>
+            <form>
+                <label for="area">エリア:</label>
+                <select id="area">
+                    <option value="">すべてのエリア</option>
+                    <option value="kanto">関東</option>
+                    <option value="kansai">関西</option>
+                    </select>
+
+                <label for="genre">ジャンル:</label>
+                <select id="genre">
+                    <option value="">すべてのジャンル</option>
+                    <option value="dolphin">イルカショー</option>
+                    <option value="penguin">ペンギン</option>
+                    </select>
+
+                <button type="submit">検索</button>
+            </form>
+            <div id="search-results">
+                </div>
+        </section>
+
+        <section id="matching">
+            <h2>マッチング</h2>
+            <p>興味のある水族館を見つけたら、マッチングしてみましょう！</p>
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 水族館マッチング</p>
+    </footer>
+
+    <script src="script.js"></script> </body>
+</html>
