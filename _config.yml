@@ -1,10 +1,7 @@
 remote_theme: autodyne/pafe
-url: https://use.zlog.org
-name: zLog令和版
-icon: /images/zlog.png
-head: /images/zlog.png
-lead: &desc Windowsで動作するコンテスト用ロギングソフトzLog令和版の機能を紹介しています。
-desc: *desc
+name: 水族館マッチング
+lead: 
+desc: 
 items:
 - name: マニュアル
   href: /manual
@@ -19,16 +16,6 @@ links:
 - name:
   href: https://github.com/nextzlog/use.zlog.org
   icon: fas fa-edit
-- name: CFG/DAT
-  href: http://ja6ycu.in.coocan.jp/ZLOG
-- name: ZyLO
-  href: https://nextzlog.github.io/zylo
-- name: zLog.org
-  href: https://zlog.org
-- name: JR8PPG
-  href: http://599010103.blog84.fc2.com
-- name: 無線部開発班
-  href: https://nextzlog.dev
 jumps:
 - name: マニュアル
   href: /manual
