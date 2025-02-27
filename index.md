@@ -1,4 +1,4 @@
 ---
-title: zLog
-subtitle: ユーザーズガイド
+title: 水族館マッチング
+subtitle: トップ
 ---
