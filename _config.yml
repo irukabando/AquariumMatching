@@ -6,6 +6,9 @@ head: /images/irukabando_icon.jpg
 lead: &desc 利用者の興味にマッチした水族館を提案します。
 desc: *desc
 items:
+- name: マッチング
+  href: /pages
+  icon: fas fa-grin-hearts
 - name: ページ
   href: /pages
   icon: fas fa-book
@@ -16,6 +19,9 @@ links:
 - name: X
   href: https://x.com/sendaiperson
 jumps:
+- name: マッチング
+  href: /pages
+  icon: fas fa-grin-hearts
 - name: ページ
   href: /pages
   icon: fas fa-book
