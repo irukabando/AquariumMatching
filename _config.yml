@@ -9,8 +9,8 @@ items:
 - name: マッチング
   href: /AquariumMatching/matching.html
   icon: fas fa-fish
-- name: ページ
-  href: /AquariumMatching/pages
+- name: コンテンツ
+  href: /AquariumMatching/contents
   icon: fas fa-book
 links:
 - name:
@@ -22,8 +22,8 @@ jumps:
 - name: マッチング
   href: /AquariumMatching/matching.html
   icon: fas fa-fish
-- name: ページ
-  href: /AquariumMatching/pages
+- name: コンテンツ
+  href: /AquariumMatching/contents
   icon: fas fa-book
 nomath: true
 plugins:
