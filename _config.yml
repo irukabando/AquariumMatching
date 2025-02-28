@@ -7,7 +7,7 @@ lead: &desc 利用者の興味にマッチした水族館を提案します。
 desc: *desc
 items:
 - name: マッチング
-  href: /pages
+  href: /matching.html
   icon: fas fa-grin-hearts
 - name: ページ
   href: /pages
@@ -20,7 +20,7 @@ links:
   href: https://x.com/sendaiperson
 jumps:
 - name: マッチング
-  href: /pages
+  href: /matching.html
   icon: fas fa-grin-hearts
 - name: ページ
   href: /pages
