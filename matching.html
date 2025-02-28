@@ -187,7 +187,7 @@ layout: default
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.name = 'itemStage1';
-                checkbox.value = `item${i}`;
+                checkbox.value = `r${i}`;
                 label.appendChild(checkbox);
                 label.appendChild(document.createTextNode(`項目${i}`));
                 checkboxGroupStage1.appendChild(label);
@@ -237,7 +237,7 @@ layout: default
                 const allItemsStage2 = Array.from(document.querySelectorAll('#checkboxGroupStage2 input[name="itemStage2"]')); // 2段階目のすべての項目を取得
         
                 allItemsStage2.forEach(item => {
-                    formData.append(`itemStatus[${item.value}]`, item.checked); // 各項目の選択状態 (true/false) をformDataに追加
+                    formData.append(`${item.value}`, item.checked); // 各項目の選択状態 (true/false) をformDataに追加
                 });
         
                 // **ここに送信先のURLを指定してください**
