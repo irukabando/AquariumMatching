@@ -179,8 +179,8 @@ layout: default
             const stage2Form = document.getElementById('stage2Form');
             const selectedCheckboxesStage2Div = document.getElementById('selectedCheckboxesStage2');
             const selectedMessageStage2Para = document.getElementById('selectedMessageStage2');
-
-
+        
+        
             // 段階1：13個のチェックボックスを動的に作成
             for (let i = 1; i <= 13; i++) {
                 const label = document.createElement('label');
@@ -192,23 +192,23 @@ layout: default
                 label.appendChild(document.createTextNode(`項目${i}`));
                 checkboxGroupStage1.appendChild(label);
             }
-
+        
             stage1Form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 errorMessageStage1.textContent = '';
-
+        
                 const checkedItemsStage1 = Array.from(document.querySelectorAll('input[name="itemStage1"]:checked'));
-
+        
                 if (checkedItemsStage1.length === 0) {
                     errorMessageStage1.textContent = '段階1で1つ以上の項目を選択してください。';
                     return;
                 }
-
+        
                 // 段階2のフォームを表示し、選択された項目からチェックボックスを生成
                 stage1Form.style.display = 'none';
                 stage2FormContainer.style.display = 'block';
                 checkboxGroupStage2.innerHTML = '';
-
+        
                 checkedItemsStage1.forEach(item => {
                     const label = document.createElement('label');
                     const checkbox = document.createElement('input');
@@ -220,27 +220,29 @@ layout: default
                     checkboxGroupStage2.appendChild(label);
                 });
             });
-
+        
             stage2Form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 errorMessageStage2.textContent = '';
-
+        
                 const checkedItemsStage2 = Array.from(document.querySelectorAll('input[name="itemStage2"]:checked'));
-
+        
                 if (checkedItemsStage2.length === 0) {
                     errorMessageStage2.textContent = '段階2で1つ以上の項目を選択してください。';
                     return;
                 }
-
-                // 選択された項目をPOST送信
+        
+                // 選択された項目と選択されなかった項目をPOST送信
                 const formData = new FormData();
-                checkedItemsStage2.forEach(item => {
-                    formData.append('selectedItems', item.value); // 選択された項目の値をformDataに追加
+                const allItemsStage2 = Array.from(document.querySelectorAll('#checkboxGroupStage2 input[name="itemStage2"]')); // 2段階目のすべての項目を取得
+        
+                allItemsStage2.forEach(item => {
+                    formData.append(`itemStatus[${item.value}]`, item.checked); // 各項目の選択状態 (true/false) をformDataに追加
                 });
-
-                //  **ここに送信先のURLを指定してください**
-                const postUrl = 'https://script.google.com/macros/s/AKfycbyQPQvUFup_ohPQ9wjf87s2R7r2Pi23mShfUouobxjHomXXg7EQTOvZB-D7gLbn8DMYUw/exec'; //  **URLを適宜変更してください**
-
+        
+                // **ここに送信先のURLを指定してください**
+                const postUrl = '/submit-url'; // **URLを適宜変更してください**
+        
                 fetch(postUrl, {
                     method: 'POST',
                     body: formData,
@@ -253,42 +255,19 @@ layout: default
                 })
                 .then(data => {
                     console.log('Success:', data);
-                    alert('送信完了！'); //  送信成功のアラートを表示 (任意)
-                    //  送信成功後の処理をここに記述 (例: ページリダイレクト、メッセージ表示など)
+                    alert('送信完了！'); // 送信成功のアラートを表示 (任意)
+                    // 送信成功後の処理をここに記述 (例: ページリダイレクト、メッセージ表示など)
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('送信エラーが発生しました。'); //  送信失敗のアラートを表示 (任意)
-                    //  送信失敗時の処理をここに記述
+                    alert('送信エラーが発生しました。'); // 送信失敗のアラートを表示 (任意)
+                    // 送信失敗時の処理をここに記述
                 });
-
+        
                 stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                 // selectedCheckboxesStage2Div.style.display = 'block'; // 最終選択項目の表示は不要なのでコメントアウトまたは削除
                 // selectedMessageStage2Para.innerHTML = ''; //  最終選択項目の表示は不要なのでコメントアウトまたは削除
-
-                //  最終選択項目の表示部分 (不要になったため削除またはコメントアウト)
-                /*
-                if (checkedItemsStage2.length > 0) {
-                    const selectedCheckboxGroup = document.createElement('div');
-                    selectedCheckboxGroup.className = 'checkbox-group';
-                    selectedMessageStage2Para.appendChild(selectedCheckboxGroup);
-
-                    checkedItemsStage2.forEach(item => {
-                        const label = document.createElement('label');
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.name = 'selectedItemStage2';
-                        checkbox.value = item.value;
-                        checkbox.checked = true;
-                        checkbox.disabled = true; // 再選択不可
-                        label.appendChild(checkbox);
-                        label.appendChild(document.createTextNode(item.nextSibling.textContent));
-                        selectedCheckboxGroup.appendChild(label);
-                    });
-                } else {
-                    selectedMessageStage2Para.textContent = '項目が選択されていません。';
-                }
-                */
+                
             });
         });
     </script>
