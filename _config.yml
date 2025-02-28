@@ -28,3 +28,7 @@ jumps:
 nomath: true
 plugins:
 - jekyll-sitemap
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  
