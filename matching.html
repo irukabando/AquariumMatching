@@ -268,16 +268,16 @@ layout: default
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
                     resultGroup.innerHTML = '';
-                    resultGroup.appendChild("結果表示");
-
+                    resultGroup.appendChild(document.createTextNode("結果表示"));
                     
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('送信エラーが発生しました。'); // 送信失敗のアラートを表示 (任意)
-                    // 送信失敗時の処理をここに記述
-                    stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
-
+                    alert('送信エラーが発生しました。');
+                    stage2FormContainer.style.display = 'none';
+                    resultContainer.style.display = 'block'; // エラー時にも結果コンテナを表示
+                    resultGroup.innerHTML = '';
+                    resultGroup.appendChild(document.createTextNode("送信エラーが発生しました。")); // エラーメッセージを結果コンテナに表示
                 });
         
 
