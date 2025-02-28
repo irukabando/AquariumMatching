@@ -172,7 +172,8 @@ layout: default
                 <div class="result-group" id="resultGroup">
                 </div>
         </div>
-
+    </div>
+        
     <script>
         // Javascript コード
         document.addEventListener('DOMContentLoaded', function() {
@@ -183,6 +184,8 @@ layout: default
             const checkboxGroupStage2 = document.getElementById('checkboxGroupStage2');
             const errorMessageStage2 = document.getElementById('errorMessageStage2');
             const stage2Form = document.getElementById('stage2Form');
+            const resultContainer = document.getElementById('resultContainer');
+            const resultGroup = document.getElementById('resultGroup');
             const selectedCheckboxesStage2Div = document.getElementById('selectedCheckboxesStage2');
             const selectedMessageStage2Para = document.getElementById('selectedMessageStage2');
         
@@ -206,7 +209,7 @@ layout: default
                 const checkedItemsStage1 = Array.from(document.querySelectorAll('input[name="itemStage1"]:checked'));
         
                 if (checkedItemsStage1.length === 0) {
-                    errorMessageStage1.textContent = '段階1で1つ以上の項目を選択してください。';
+                    errorMessageStage1.textContent = '1つ以上の項目を選択してください。';
                     return;
                 }
         
@@ -235,7 +238,7 @@ layout: default
                 const checkedItemsStage2 = Array.from(document.querySelectorAll('input[name="itemStage2"]:checked'));
         
                 if (checkedItemsStage2.length === 0) {
-                    errorMessageStage2.textContent = '段階2で1つ以上の項目を選択してください。';
+                    errorMessageStage2.textContent = '1つ以上の項目を選択してください。';
                     return;
                 }
         
@@ -268,7 +271,7 @@ layout: default
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
                     resultGroup.innerHTML = '';
-                    resultGroup.appendChild(document.createTextNode("結果表示"));
+                    resultGroup.appendChild(document.createTextNode(data));
                     
                 })
                 .catch(error => {
