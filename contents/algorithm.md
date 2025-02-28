@@ -2,6 +2,8 @@
 title: 水族館マッチング アルゴリズム解説
 ---
 
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 # 水族館マッチングのアルゴリズム解説
 
 ## 解説動画
