@@ -232,21 +232,19 @@ layout: default
                     return;
                 }
         
-                // 選択された項目と選択されなかった項目をPOST送信
-                const formData = new FormData();
+                // GETリクエストのクエリパラメータを生成
+                const params = new URLSearchParams();
                 const allItemsStage2 = Array.from(document.querySelectorAll('#checkboxGroupStage2 input[name="itemStage2"]')); // 2段階目のすべての項目を取得
         
                 allItemsStage2.forEach(item => {
-                    formData.append(`itemStatus[${item.value}]`, item.checked); // 各項目の選択状態 (true/false) をformDataに追加
+                    params.append(`itemStatus[${item.value}]`, item.checked); // 各項目の選択状態 (true/false) をクエリパラメータに追加
                 });
         
                 // **ここに送信先のURLを指定してください**
                 const postUrl = 'https://script.google.com/macros/s/AKfycbyQPQvUFup_ohPQ9wjf87s2R7r2Pi23mShfUouobxjHomXXg7EQTOvZB-D7gLbn8DMYUw/exec'; // **URLを適宜変更してください**
+                const getUrl = `${postUrl}?${params.toString()}`; // URLにクエリパラメータを付加
         
-                fetch(postUrl, {
-                    method: 'POST',
-                    body: formData,
-                })
+                fetch(getUrl) // GETリクエストに変更、bodyを削除
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -265,9 +263,7 @@ layout: default
                 });
         
                 stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
-                // selectedCheckboxesStage2Div.style.display = 'block'; // 最終選択項目の表示は不要なのでコメントアウトまたは削除
-                // selectedMessageStage2Para.innerHTML = ''; //  最終選択項目の表示は不要なのでコメントアウトまたは削除
-                
+        
             });
         });
     </script>
