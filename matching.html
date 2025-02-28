@@ -3,9 +3,6 @@ title: 水族館マッチング - 回答
 layout: default
 ---
 
-以下の質問に全てご回答の上、送信をお願いします（準備中）
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,7 +167,7 @@ layout: default
         </form>
 
         <div id="stage2FormContainer">
-            <h2>項目の再選択 (段階2)</h2>
+            <h1>項目の再選択 (段階2)</h1>
             <form id="stage2Form">
                 <div class="checkbox-group" id="checkboxGroupStage2">
                 </div>
@@ -180,7 +177,7 @@ layout: default
         </div>
         
         <div id="resultContainer">
-            <h2> マッチング結果 </h2>
+            <h1> マッチング結果 </h1>
                 <div class="result-group" id="resultGroup">
                 </div>
         </div>
@@ -283,7 +280,42 @@ layout: default
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
                     resultGroup.innerHTML = '';
-                    resultGroup.appendChild(document.createTextNode(data));
+                    // resultGroup.appendChild(document.createTextNode(data));
+
+
+                    
+  for (var i = 1; i <= 5; i++) { // 5回繰り返すループ
+
+    // <h2> タグの作成と内容設定
+    const heading = document.createElement('h2');
+    heading.textContent = `表題 ${i} (h2)`; // 表題テキスト
+
+    // <p> タグの作成と内容設定
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `これは${i}番目の解説です。pタグで記述されています。`; // 解説テキスト
+
+    // <a> タグの作成と属性・内容設定
+    const link = document.createElement('a');
+    link.href = `https://example.com/page${i}`; // リンク先 URL
+    link.textContent = `リンク ${i} (example.com)`; // リンクテキスト
+    link.target = '_blank'; // 別タブで開く設定 (任意)
+    link.rel = 'noopener noreferrer'; // セキュリティ対策 (別タブで開く場合は推奨)
+
+
+    // 作成した要素を contentContainer (div) に追加
+    resultGroup.appendChild(heading);
+    resultGroup.appendChild(paragraph);
+    resultGroup.appendChild(link);
+
+    // 各セットの区切りとして水平線 (hr) を追加 (任意)
+    if (i < 5) { // 最後のセットの後には水平線を追加しない
+      const hr = document.createElement('hr');
+      resultGroup.appendChild(hr);
+    }
+  }
+
+                    
+                    
                     
                 })
                 .catch(error => {
