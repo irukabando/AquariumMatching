@@ -1,12 +1,11 @@
 ---
-title: 水族館マッチング - 回答
+title: 水族館マッチング 回答
 layout: default
 ---
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2段階チェックボックス (POST送信)</title>
     <style>
         /* CSS スタイル */
 
@@ -159,7 +158,8 @@ layout: default
 <body>
     <div class="container">
         <form id="stage1Form">
-            <h1>項目の選択 (段階1)</h1>
+            <h1> 重視する展示 </h1>
+            <p> 以下の選択肢から、重視する展示を選択してください。 </p>
             <div class="checkbox-group" id="checkboxGroupStage1">
             </div>
             <button type="submit">送信</button>
@@ -167,12 +167,14 @@ layout: default
         </form>
 
         <div id="stage2FormContainer">
-            <h1>項目の再選択 (段階2)</h1>
+            <h1> 特に重視する展示 </h1>
+            <p> 選択いただきました重視する展示の中でも、特に重視する展示を選択してください。必ず１展示は選択してください。 </p>
             <form id="stage2Form">
                 <div class="checkbox-group" id="checkboxGroupStage2">
                 </div>
                 <button type="submit">送信</button>
                 <p id="errorMessageStage2" class="error-message"></p>
+                <p> プログラムの関係上、処理に時間がかかります。 </p>
             </form>
         </div>
         
