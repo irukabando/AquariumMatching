@@ -2,6 +2,12 @@
 title: 水族館マッチング アルゴリズム解説
 ---
 
+<head>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+
 # 水族館マッチングのアルゴリズム解説
 
 ## 解説動画
