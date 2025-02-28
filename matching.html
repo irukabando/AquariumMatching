@@ -202,8 +202,8 @@ layout: default
         
         
             // 段階1：13個のチェックボックスを動的に作成
-            for (let i = 1; i <= 13; i++) {
-                const exhibit_values = ["イルカ（水中観察）","イルカ（ショー）","シャチ","ベルーガ","サメ","魚類大水槽","魚類トンネル水槽","熱帯魚","日本近海の海水魚","アザラシ","ペンギン","クラゲ","深海生物展示","ラッコ","ジュゴン","カメ","タッチプール","学術、教育的展示","エンターテイメント性"];
+            const exhibit_values = ["イルカ（水中観察）","イルカ（ショー）","シャチ","ベルーガ","サメ","魚類大水槽","魚類トンネル水槽","熱帯魚","日本近海の海水魚","アザラシ","ペンギン","クラゲ","深海生物展示","ラッコ","ジュゴン","カメ","タッチプール","学術、教育的展示","エンターテイメント性"];
+            for (let i = 0; i < exhibit_values.length; i++) {
                 const label = document.createElement('label');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
