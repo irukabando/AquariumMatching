@@ -283,22 +283,24 @@ layout: default
                     resultGroup.innerHTML = '';
                     // resultGroup.appendChild(document.createTextNode(data));
 
+                    const data_arr = data.split("/");
+
 
                     
-  for (var i = 1; i <= 5; i++) { // 5回繰り返すループ
+  for (var i = 0; i < 5; i++) { // 5回繰り返すループ
 
     // <h2> タグの作成と内容設定
     const heading = document.createElement('h2');
-    heading.textContent = `表題 ${i} (h2)`; // 表題テキスト
+    heading.textContent = data_arr[i]; // 表題テキスト
 
     // <p> タグの作成と内容設定
     const paragraph = document.createElement('p');
-    paragraph.textContent = `これは${i}番目の解説です。pタグで記述されています。`; // 解説テキスト
+    paragraph.textContent = data_arr[i] + "の解説が入ります。順次作成中"; // 解説テキスト
 
     // <a> タグの作成と属性・内容設定
     const link = document.createElement('a');
-    link.href = `https://example.com/page${i}`; // リンク先 URL
-    link.textContent = `リンク ${i} (example.com)`; // リンクテキスト
+    link.href = `https://nagoyaaqua.jp/`; // リンク先 URL
+    link.textContent = "リンクが入ります。サンプルで名古屋港水族館に飛びます。"; // リンクテキスト
     link.target = '_blank'; // 別タブで開く設定 (任意)
     link.rel = 'noopener noreferrer'; // セキュリティ対策 (別タブで開く場合は推奨)
 
