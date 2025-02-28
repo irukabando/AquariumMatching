@@ -267,11 +267,9 @@ layout: default
 
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
-                    checkedItemsStage1.forEach(item => {
-                        const label = document.createElement('label');
-                        const checkbox = document.createElement('input');
-                        resultContainer.appendChild(data);
-                    });
+                    resultContainer.innerHTML = '';
+                    resultContainer.appendChild(data);
+
                     
                 })
                 .catch(error => {
