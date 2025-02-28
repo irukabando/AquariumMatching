@@ -4,3 +4,293 @@ layout: default
 ---
 
 以下の質問に全てご回答の上、送信をお願いします（準備中）
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2段階チェックボックス (POST送信)</title>
+    <style>
+        /* CSS スタイル */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            display: flex; /* Flexbox を使用してタイル状に配置 */
+            flex-wrap: wrap; /* 必要に応じて折り返す */
+            justify-content: flex-start; /* 左寄せで配置、必要に応じて space-around などに変更 */
+            gap: 10px; /* タイル間の間隔 */
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group label {
+            display: flex; /* Flexbox を使用してチェックボックスとテキストを配置 */
+            flex-direction: column; /* チェックボックスとテキストを縦に並べる */
+            align-items: center; /* 中央揃え */
+            justify-content: center; /* 垂直方向中央揃え */
+            width: 150px; /* 長方形の幅 (例) */
+            height: 200px; /* 長方形の高さ (例) - 幅:高さ = 3:4 */
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box; /* padding, border を含めてサイズ計算 */
+            background-color: #add8e6; /* 背景色を送信ボタンと同じ色に設定 */
+            color: black; /* テキスト色を黒に設定 */
+        }
+
+        .checkbox-group label:hover {
+            background-color: #0056b3; /* ホバー時の背景色を濃い青に変更 */
+        color: white; // 白
+        }
+
+
+        .checkbox-group input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 25px; /* 正方形のチェックボックス */
+            height: 25px;
+            border: 2px solid #ced4da;
+            border-radius: 3px;
+            background-color: #fff;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 10px; /* チェックボックスとテキストの間隔 */
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        #stage2FormContainer {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        #stage2FormContainer h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        #selectedCheckboxesStage2 {
+            display: none; /* 最終選択項目表示は不要になったため、削除してもよいですが、ここでは `display: none;` のまま残しています */
+        }
+
+        #selectedCheckboxesStage2 h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>項目の選択 (段階1)</h1>
+        <form id="stage1Form">
+            <div class="checkbox-group" id="checkboxGroupStage1">
+            </div>
+            <button type="submit">送信</button>
+            <p id="errorMessageStage1" class="error-message"></p>
+        </form>
+
+        <div id="stage2FormContainer">
+            <h2>項目の再選択 (段階2)</h2>
+            <form id="stage2Form">
+                <div class="checkbox-group" id="checkboxGroupStage2">
+                </div>
+            <button type="submit">送信</button>
+            <p id="errorMessageStage2" class="error-message"></p>
+        </form>
+        </div>
+
+    <script>
+        // Javascript コード
+        document.addEventListener('DOMContentLoaded', function() {
+            const stage1Form = document.getElementById('stage1Form');
+            const checkboxGroupStage1 = document.getElementById('checkboxGroupStage1');
+            const errorMessageStage1 = document.getElementById('errorMessageStage1');
+            const stage2FormContainer = document.getElementById('stage2FormContainer');
+            const checkboxGroupStage2 = document.getElementById('checkboxGroupStage2');
+            const errorMessageStage2 = document.getElementById('errorMessageStage2');
+            const stage2Form = document.getElementById('stage2Form');
+            const selectedCheckboxesStage2Div = document.getElementById('selectedCheckboxesStage2');
+            const selectedMessageStage2Para = document.getElementById('selectedMessageStage2');
+
+
+            // 段階1：13個のチェックボックスを動的に作成
+            for (let i = 1; i <= 13; i++) {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'itemStage1';
+                checkbox.value = `item${i}`;
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(`項目${i}`));
+                checkboxGroupStage1.appendChild(label);
+            }
+
+            stage1Form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                errorMessageStage1.textContent = '';
+
+                const checkedItemsStage1 = Array.from(document.querySelectorAll('input[name="itemStage1"]:checked'));
+
+                if (checkedItemsStage1.length === 0) {
+                    errorMessageStage1.textContent = '段階1で1つ以上の項目を選択してください。';
+                    return;
+                }
+
+                // 段階2のフォームを表示し、選択された項目からチェックボックスを生成
+                stage1Form.style.display = 'none';
+                stage2FormContainer.style.display = 'block';
+                checkboxGroupStage2.innerHTML = '';
+
+                checkedItemsStage1.forEach(item => {
+                    const label = document.createElement('label');
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.name = 'itemStage2';
+                    checkbox.value = item.value;
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(item.nextSibling.textContent));
+                    checkboxGroupStage2.appendChild(label);
+                });
+            });
+
+            stage2Form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                errorMessageStage2.textContent = '';
+
+                const checkedItemsStage2 = Array.from(document.querySelectorAll('input[name="itemStage2"]:checked'));
+
+                if (checkedItemsStage2.length === 0) {
+                    errorMessageStage2.textContent = '段階2で1つ以上の項目を選択してください。';
+                    return;
+                }
+
+                // 選択された項目をPOST送信
+                const formData = new FormData();
+                checkedItemsStage2.forEach(item => {
+                    formData.append('selectedItems', item.value); // 選択された項目の値をformDataに追加
+                });
+
+                //  **ここに送信先のURLを指定してください**
+                const postUrl = 'https://script.google.com/macros/s/AKfycbyQPQvUFup_ohPQ9wjf87s2R7r2Pi23mShfUouobxjHomXXg7EQTOvZB-D7gLbn8DMYUw/exec'; //  **URLを適宜変更してください**
+
+                fetch(postUrl, {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text(); // または response.json() でJSONレスポンスを処理
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('送信完了！'); //  送信成功のアラートを表示 (任意)
+                    //  送信成功後の処理をここに記述 (例: ページリダイレクト、メッセージ表示など)
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('送信エラーが発生しました。'); //  送信失敗のアラートを表示 (任意)
+                    //  送信失敗時の処理をここに記述
+                });
+
+                stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
+                // selectedCheckboxesStage2Div.style.display = 'block'; // 最終選択項目の表示は不要なのでコメントアウトまたは削除
+                // selectedMessageStage2Para.innerHTML = ''; //  最終選択項目の表示は不要なのでコメントアウトまたは削除
+
+                //  最終選択項目の表示部分 (不要になったため削除またはコメントアウト)
+                /*
+                if (checkedItemsStage2.length > 0) {
+                    const selectedCheckboxGroup = document.createElement('div');
+                    selectedCheckboxGroup.className = 'checkbox-group';
+                    selectedMessageStage2Para.appendChild(selectedCheckboxGroup);
+
+                    checkedItemsStage2.forEach(item => {
+                        const label = document.createElement('label');
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = 'selectedItemStage2';
+                        checkbox.value = item.value;
+                        checkbox.checked = true;
+                        checkbox.disabled = true; // 再選択不可
+                        label.appendChild(checkbox);
+                        label.appendChild(document.createTextNode(item.nextSibling.textContent));
+                        selectedCheckboxGroup.appendChild(label);
+                    });
+                } else {
+                    selectedMessageStage2Para.textContent = '項目が選択されていません。';
+                }
+                */
+            });
+        });
+    </script>
+</body>
+</html>
