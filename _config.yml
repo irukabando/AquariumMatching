@@ -21,7 +21,7 @@ links:
 jumps:
 - name: マッチング
   href: /AquariumMatching/matching.html
-  icon: fas fa-grin-hearts
+  icon: fas fish
 - name: ページ
   href: /AquariumMatching/pages
   icon: fas fa-book
