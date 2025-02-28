@@ -6,7 +6,7 @@ title: 水族館マッチング - 解説
 
 水族館マッチングの開発意義・経緯、使用例などを解説します。  
 
-[PDF](../resourses/about_AM.pdf)
+[PDFはこちらから](../resourses/about_AM.pdf)
 
 ## 解説スライド
 
