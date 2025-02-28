@@ -162,9 +162,9 @@ layout: default
             <form id="stage2Form">
                 <div class="checkbox-group" id="checkboxGroupStage2">
                 </div>
-            <button type="submit">送信</button>
-            <p id="errorMessageStage2" class="error-message"></p>
-        </form>
+                <button type="submit">送信</button>
+                <p id="errorMessageStage2" class="error-message"></p>
+            </form>
         </div>
         
         <div id="resultContainer">
@@ -267,8 +267,8 @@ layout: default
 
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
-                    resultContainer.innerHTML = '';
-                    resultContainer.appendChild(data);
+                    resultGroup.innerHTML = '';
+                    resultGroup.appendChild("結果表示");
 
                     
                 })
