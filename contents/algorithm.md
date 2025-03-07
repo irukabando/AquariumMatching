@@ -6,6 +6,27 @@ title: 水族館マッチング アルゴリズム解説
 
 # 水族館マッチングのアルゴリズム解説
 
+## 解説スライド
+
+![algorithm1](../images/algorithm1.PNG)  
+![algorithm2](../images/algorithm2.PNG)  
+![algorithm3](../images/algorithm3.PNG)  
+![algorithm4](../images/algorithm4.PNG)  
+![algorithm5](../images/algorithm5.PNG)  
+![algorithm6](../images/algorithm6.PNG)  
+![algorithm7](../images/algorithm7.PNG)  
+![algorithm8](../images/algorithm8.PNG)  
+![algorithm9](../images/algorithm9.PNG)  
+![algorithm10](../images/algorithm10.PNG)  
+![algorithm11](../images/algorithm11.PNG)  
+![algorithm12](../images/algorithm12.PNG)  
+![algorithm13](../images/algorithm13.PNG)  
+![algorithm14](../images/algorithm14.PNG)  
+![algorithm15](../images/algorithm15.PNG)  
+![algorithm16](../images/algorithm16.PNG)  
+![algorithm17](../images/algorithm17.PNG)  
+![algorithm18](../images/algorithm18.PNG)  
+
 ## 解説動画
 
 [水族館マッチングアルゴリズム解説 (YouTube)](https://youtu.be/MRr_SL3yag8)  
