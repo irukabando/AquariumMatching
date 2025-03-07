@@ -8,7 +8,7 @@ title: 水族館マッチング アルゴリズム解説
 
 ## 解説動画
 
-[水族館マッチングアルゴリズム解説 (YouTube)](https://youtu.be/uIwTinVRg80)  
+[水族館マッチングアルゴリズム解説 (YouTube)](https://youtu.be/MRr_SL3yag8)  
 上の解説スライドを用いた、合成音声による解説付きのアルゴリズム解説の動画です。  
 
 ## 水族館マッチングのアルゴリズム解説
@@ -53,7 +53,7 @@ $$
 例として、水族館 $$i$$ の評価ベクトル $$\mathbf{a_i}$$ が以下のように与えられたとする。
 
 $$
-\mathbf{a_i} = \begin{bmatrix} a{i1} \ a_{i2} \ a_{i3} \end{bmatrix} = \begin{bmatrix} 2 \ 5 \ 3 \end{bmatrix}
+\mathbf{a_i} = \begin{bmatrix} a_{i1} \ a_{i2} \ a_{i3} \end{bmatrix} = \begin{bmatrix} 2 \ 5 \ 3 \end{bmatrix}
 $$
 
 
