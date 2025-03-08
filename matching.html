@@ -25,10 +25,10 @@ layout: default
 
         .container {
             background-color: #fff;
-            padding: 40px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            width: 90%;
+            width: 95%;
             max-width: 900px;
             text-align: center;
         }
@@ -51,8 +51,8 @@ layout: default
             flex-direction: column; /* チェックボックスとテキストを縦に並べる */
             align-items: center; /* 中央揃え */
             justify-content: center; /* 垂直方向中央揃え */
-            width: 150px; /* 長方形の幅 (例) */
-            height: 100px; /* 長方形の高さ (例) - 幅:高さ = 3:4 */
+            width: 120px; /* 長方形の幅 (例) */
+            height: 90px; /* 長方形の高さ (例) - 幅:高さ = 3:4 */
             border: 1px solid #ced4da;
             border-radius: 5px;
             cursor: pointer;
@@ -174,7 +174,6 @@ layout: default
                 </div>
                 <button type="submit">送信</button>
                 <p id="errorMessageStage2" class="error-message"></p>
-                <p> プログラムの関係上、処理に時間がかかります。 </p>
             </form>
         </div>
         
@@ -226,7 +225,7 @@ layout: default
                 }
         
                 // 段階2のフォームを表示し、選択された項目からチェックボックスを生成
-                stage1Form.style.display = 'none';
+                // stage1Form.style.display = 'none';
                 stage2FormContainer.style.display = 'block';
                 checkboxGroupStage2.innerHTML = '';
         
@@ -245,7 +244,7 @@ layout: default
         
             stage2Form.addEventListener('submit', function(event) {
                 event.preventDefault();
-                errorMessageStage2.textContent = '';
+                errorMessageStage2.textContent = '読み込み中...';
         
                 const checkedItemsStage2 = Array.from(document.querySelectorAll('input[name="itemStage2"]:checked'));
         
@@ -263,7 +262,7 @@ layout: default
                 });
         
                 // **ここに送信先のURLを指定してください**
-                const postUrl = 'https://script.google.com/macros/s/AKfycbyQPQvUFup_ohPQ9wjf87s2R7r2Pi23mShfUouobxjHomXXg7EQTOvZB-D7gLbn8DMYUw/exec'; // **URLを適宜変更してください**
+                const postUrl = 'https://script.google.com/macros/s/AKfycbyQPQvUFup_ohPQ9wjf87s2R7r2Pi23mShfUouobxjHomXXg7EQTOvZB-D7gLbn8DMYUw/exec'; // URLを適宜変更
         
                 fetch(postUrl, { // POSTリクエストに戻す
                     method: 'POST',
@@ -286,9 +285,7 @@ layout: default
                     // resultGroup.appendChild(document.createTextNode(data));
 
                     const data_arr = data.split("/");
-
-
-                    
+                 
   for (var i = 0; i < 5; i++) { // 5回繰り返すループ
 
     // <h2> タグの作成と内容設定
@@ -306,7 +303,6 @@ layout: default
     link.target = '_blank'; // 別タブで開く設定 (任意)
     link.rel = 'noopener noreferrer'; // セキュリティ対策 (別タブで開く場合は推奨)
 
-
     // 作成した要素を contentContainer (div) に追加
     resultGroup.appendChild(heading);
     resultGroup.appendChild(paragraph);
@@ -318,10 +314,7 @@ layout: default
       resultGroup.appendChild(hr);
     }
   }
-
-                    
-                    
-                    
+  
                 })
                 .catch(error => {
                     console.error('Error:', error);
