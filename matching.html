@@ -138,7 +138,10 @@ layout: default
             color: #007bff;
             margin-bottom: 15px;
         }
-        
+
+        #resultContainer {
+            display: none; /* 初期状態では非表示にする */
+        }
 
     </style>
 </head>
@@ -266,6 +269,7 @@ layout: default
                     // alert('送信完了！'); // 送信成功のアラートを表示 (任意)
                     // 送信成功後の処理をここに記述 (例: ページリダイレクト、メッセージ表示など)
 
+                    stage1Form.style.display = 'none'; // 段階1のフォームを非表示にする
                     stage2FormContainer.style.display = 'none'; // 段階2のフォームを非表示にする
                     resultContainer.style.display = 'block';
                     resultGroup.innerHTML = '';
