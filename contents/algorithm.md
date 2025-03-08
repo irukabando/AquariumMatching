@@ -32,6 +32,9 @@ title: 水族館マッチング アルゴリズム解説
 [水族館マッチングアルゴリズム解説 (YouTube)](https://youtu.be/2X1YY6vnraM)  
 上の解説スライドを用いた、合成音声による解説付きのアルゴリズム解説の動画です。  
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2X1YY6vnraM?si=EiueiuhEJGx5Gtqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
 ## 水族館マッチングのアルゴリズム解説
 
 ### 1. 水族館マッチングの概要
