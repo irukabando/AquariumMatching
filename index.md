@@ -10,6 +10,6 @@ subtitle: トップ
 
 ## 開発体制
 * Developed: 坂東入香 (Iruka Bando)
-  * [X (Formerly Twitter)](https://x.com/sendaiperson)
+  * [X (Formerly Twitter): @sendaiperson](https://x.com/sendaiperson)
 * Special Thanks: しゃち
-  * [X (Formerly Twitter)](https://x.com/Orca_Luna_)
+  * [X (Formerly Twitter): @Orca_Earth_](https://x.com/Orca_Earth_)
